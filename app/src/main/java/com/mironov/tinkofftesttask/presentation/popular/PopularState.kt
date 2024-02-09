@@ -9,4 +9,6 @@ sealed interface PopularState {
     data object Loading: PopularState
 
     data class Content(val content: List<FilmInfo>): PopularState
+
+    data object Error: PopularState
 }

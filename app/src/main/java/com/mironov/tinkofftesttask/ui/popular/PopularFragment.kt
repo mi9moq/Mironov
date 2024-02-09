@@ -67,15 +67,33 @@ class PopularFragment : Fragment() {
             PopularState.Initial -> Unit
             is PopularState.Content -> applyContentState(state.content)
             PopularState.Loading -> applyLoadingState()
+            PopularState.Error -> applyErrorState()
         }
     }
 
     private fun applyContentState(content: List<FilmInfo>) {
-        binding.filmsList.adapter = filmsAdapter
-        filmsAdapter.submitList(content)
+        with(binding) {
+            filmsList.visibility = View.VISIBLE
+            error.visibility = View.GONE
+            progressBar.visibility = View.GONE
+            filmsList.adapter = filmsAdapter
+            filmsAdapter.submitList(content)
+        }
     }
 
     private fun applyLoadingState() {
-        //TODO обработать состояние загрузки
+        with(binding) {
+            filmsList.visibility = View.GONE
+            error.visibility = View.GONE
+            progressBar.visibility = View.VISIBLE
+        }
+    }
+
+    private fun applyErrorState() {
+        with(binding) {
+            filmsList.visibility = View.GONE
+            error.visibility = View.VISIBLE
+            progressBar.visibility = View.GONE
+        }
     }
 }
