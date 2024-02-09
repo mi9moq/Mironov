@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -45,6 +49,10 @@ dependencies {
     implementation(libs.constraintlayout)
 
     implementation(libs.cicerone)
+    implementation(libs.loggin.interceptor)
+    implementation(libs.lifecycle.vm)
+    implementation(libs.lifecycle.rt)
+    implementation(libs.picasso)
 
     implementation(libs.dagger.core)
     ksp(libs.dagger.compiler)
