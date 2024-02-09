@@ -1,6 +1,5 @@
 package com.mironov.tinkofftesttask.presentation.popular
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mironov.tinkofftesttask.domain.usecase.GetPopularFilmsUseCase
@@ -8,7 +7,6 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.net.UnknownHostException
 import javax.inject.Inject
 
 class PopularViewModel @Inject constructor(
@@ -26,7 +24,7 @@ class PopularViewModel @Inject constructor(
         loadFilms()
     }
 
-    private fun loadFilms() {
+    fun loadFilms() {
         _state.value = PopularState.Loading
 
         viewModelScope.launch(handler) {

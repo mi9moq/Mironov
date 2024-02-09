@@ -55,7 +55,14 @@ class PopularFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        addClickListeners()
         observeViewModel()
+    }
+
+    private fun addClickListeners() {
+        binding.tryAgain.setOnClickListener {
+            viewModel.loadFilms()
+        }
     }
 
     private fun observeViewModel() {
