@@ -35,7 +35,9 @@ class PopularFragment : Fragment() {
 
     private val filmsAdapter by lazy {
         FilmsAdapter(
-            onClick = { viewModel::openDetails }
+            onClick = {
+                viewModel.openDetails(it)
+            }
         )
     }
 
