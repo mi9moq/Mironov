@@ -12,6 +12,7 @@ class DetailInfoConverter @Inject constructor() {
         posterUrl = from.posterUrl,
         year = from.year,
         countries = from.countries.map { it.country },
-        genres = from.genres.map { it.genre }
+        genres = from.genres.map { it.genre },
+        description = from.description,
     )
 }

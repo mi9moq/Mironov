@@ -5,6 +5,7 @@ data class FilmDetailInfo(
     val name: String,
     val posterUrl: String,
     val year: Int,
+    val description: String,
     val countries: List<String>,
     val genres: List<String>
 )
