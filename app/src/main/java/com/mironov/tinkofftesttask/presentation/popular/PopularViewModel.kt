@@ -1,7 +1,9 @@
 package com.mironov.tinkofftesttask.presentation.popular
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.mironov.tinkofftesttask.domain.usecase.GetPopularFilmsUseCase
 import com.mironov.tinkofftesttask.navigation.router.PopularRouter

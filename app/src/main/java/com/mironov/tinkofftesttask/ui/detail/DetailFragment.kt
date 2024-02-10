@@ -120,16 +120,16 @@ class DetailFragment : Fragment() {
 
     private fun applyErrorState() {
         with(binding) {
-            content.visibility = View.VISIBLE
+            content.visibility = View.GONE
             progressBar.visibility = View.GONE
-            error.visibility = View.GONE
+            error.visibility = View.VISIBLE
         }
     }
 
     private fun applyLoadingState() {
         with(binding) {
-            content.visibility = View.VISIBLE
-            progressBar.visibility = View.GONE
+            content.visibility = View.GONE
+            progressBar.visibility = View.VISIBLE
             error.visibility = View.GONE
         }
     }

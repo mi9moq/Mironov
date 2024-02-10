@@ -10,5 +10,5 @@ class GetPopularFilmsUseCase @Inject constructor(
     private val repository: FilmsRepository
 ) {
 
-    suspend operator fun invoke(): Flow<PagingData<FilmInfo>> = repository.getPopular()
+    operator fun invoke(): Flow<PagingData<FilmInfo>> = repository.getPopular()
 }

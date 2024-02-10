@@ -5,6 +5,7 @@ import com.mironov.tinkofftesttask.data.remote.api.KeyInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
@@ -21,7 +22,9 @@ class NetworkModule {
     @Provides
     fun provideHttpClient(keyInterceptor: KeyInterceptor): OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(keyInterceptor)
-        .build()
+        .addInterceptor(HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }).build()
 
     @AppScope
     @Provides

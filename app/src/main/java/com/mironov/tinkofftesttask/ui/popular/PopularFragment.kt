@@ -2,13 +2,17 @@ package com.mironov.tinkofftesttask.ui.popular
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.paging.PagingData
+import androidx.paging.PagingDataAdapter
 import com.mironov.tinkofftesttask.MainActivity
 import com.mironov.tinkofftesttask.databinding.FragmentPopularFilmsBinding
 import com.mironov.tinkofftesttask.domain.entity.FilmInfo
@@ -16,6 +20,7 @@ import com.mironov.tinkofftesttask.presentation.ViewModelFactory
 import com.mironov.tinkofftesttask.presentation.popular.PopularState
 import com.mironov.tinkofftesttask.presentation.popular.PopularViewModel
 import com.mironov.tinkofftesttask.ui.utils.collectStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -85,10 +90,28 @@ class PopularFragment : Fragment() {
 
     private fun applyContentState(content: PagingData<FilmInfo>) {
         with(binding) {
-            filmsList.visibility = View.VISIBLE
-            error.visibility = View.GONE
-            progressBar.visibility = View.GONE
-            filmsList.adapter = filmsAdapter
+            Log.d("PopularFragment", "CONTENT STATE")
+//            filmsList.visibility = View.VISIBLE
+//            error.visibility = View.GONE
+//            progressBar.visibility = View.GONE
+            filmsList.adapter = filmsAdapter.withLoadStateFooter(FilmsStateAdapter())
+//            lifecycleScope.launch {
+//                (filmsAdapter as PagingDataAdapter<FilmInfo, FilmsViewHolder>).loadStateFlow.collectLatest {
+//                    when(it.refresh){
+//                        is LoadState.Error -> {
+//                            applyErrorState()
+//                        }
+//                        LoadState.Loading -> Unit
+//                        is LoadState.NotLoading -> Unit
+//                    }
+//                }
+//            }
+
+            filmsAdapter.addLoadStateListener {
+                filmsList.isVisible = it.refresh is LoadState.NotLoading
+                error.isVisible = it.refresh is LoadState.Error
+                progressBar.isVisible = it.refresh is LoadState.Loading
+            }
             viewLifecycleOwner.lifecycleScope.launch {
                 filmsAdapter.submitData(content)
             }
@@ -96,6 +119,7 @@ class PopularFragment : Fragment() {
     }
 
     private fun applyLoadingState() {
+        Log.d("PopularFragment", "LOADING STATE")
         with(binding) {
             filmsList.visibility = View.GONE
             error.visibility = View.GONE
@@ -104,6 +128,7 @@ class PopularFragment : Fragment() {
     }
 
     private fun applyErrorState() {
+        Log.d("PopularFragment", "ERROR STATE")
         with(binding) {
             filmsList.visibility = View.GONE
             error.visibility = View.VISIBLE
