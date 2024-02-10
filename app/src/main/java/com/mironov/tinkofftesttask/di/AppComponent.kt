@@ -4,6 +4,7 @@ import android.app.Application
 import com.mironov.tinkofftesttask.FilmsApp
 import com.mironov.tinkofftesttask.MainActivity
 import com.mironov.tinkofftesttask.ui.detail.DetailFragment
+import com.mironov.tinkofftesttask.ui.favourite.FavouriteFragment
 import com.mironov.tinkofftesttask.ui.popular.PopularFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -28,6 +29,8 @@ interface AppComponent {
     fun inject(fragment: PopularFragment)
 
     fun inject(fragment: DetailFragment)
+
+    fun inject(fragment: FavouriteFragment)
 
     @Component.Factory
     interface Factory {

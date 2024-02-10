@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.mironov.tinkofftesttask.databinding.ActivityMainBinding
 import com.mironov.tinkofftesttask.di.AppComponent
-import com.mironov.tinkofftesttask.di.DaggerAppComponent
 import com.mironov.tinkofftesttask.presentation.ViewModelFactory
 import com.mironov.tinkofftesttask.presentation.activity.ActivityViewModel
 import javax.inject.Inject
@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     val component: AppComponent by lazy {
         (application as FilmsApp).component
     }
+
+    private lateinit var binding: ActivityMainBinding
 
     @Inject
     lateinit var router: Router
@@ -36,8 +38,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        if (savedInstanceState == null){
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        if (savedInstanceState == null) {
+            viewModel.openPopular()
+        }
+        addClickListeners()
+    }
+
+    private fun addClickListeners() {
+        binding.favourite.setOnClickListener {
+            viewModel.openFavourite()
+        }
+
+        binding.popular.setOnClickListener {
             viewModel.openPopular()
         }
     }
