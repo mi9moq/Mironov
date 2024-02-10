@@ -4,7 +4,7 @@ import com.mironov.tinkofftesttask.domain.entity.FilmDetailInfo
 import com.mironov.tinkofftesttask.domain.repository.FilmsRepository
 import javax.inject.Inject
 
-class GetFilmInfoById @Inject constructor(
+class GetFilmInfoByIdUseCase @Inject constructor(
     private val repository: FilmsRepository
 ) {
     suspend operator fun invoke(id: Int): FilmDetailInfo = repository.getById(id)
