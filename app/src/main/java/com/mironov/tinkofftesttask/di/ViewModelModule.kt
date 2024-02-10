@@ -1,6 +1,7 @@
 package com.mironov.tinkofftesttask.di
 
 import androidx.lifecycle.ViewModel
+import com.mironov.tinkofftesttask.presentation.activity.ActivityViewModel
 import com.mironov.tinkofftesttask.presentation.detail.DetailViewModel
 import com.mironov.tinkofftesttask.presentation.popular.PopularViewModel
 import dagger.Binds
@@ -19,4 +20,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(DetailViewModel::class)
     fun bindDetailViewModel(impl: DetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ActivityViewModel::class)
+    fun bindActivityViewModel(impl: ActivityViewModel): ViewModel
 }

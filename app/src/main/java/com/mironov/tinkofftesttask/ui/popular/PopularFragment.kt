@@ -26,6 +26,11 @@ import javax.inject.Inject
 
 class PopularFragment : Fragment() {
 
+    companion object {
+
+        fun newInstance(): PopularFragment = PopularFragment()
+    }
+
     private val component by lazy {
         (requireActivity() as MainActivity).component
     }
