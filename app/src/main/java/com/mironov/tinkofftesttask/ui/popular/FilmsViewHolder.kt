@@ -11,7 +11,8 @@ import com.squareup.picasso.Picasso
 
 class FilmsViewHolder(
     parent: ViewGroup,
-    private val onClick: (Int) -> Unit
+    private val onClick: (Int) -> Unit,
+    private val onLongClick: (FilmInfo) -> Unit,
 ) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(R.layout.film_item, parent, false)
 ) {
@@ -28,6 +29,11 @@ class FilmsViewHolder(
 
             itemView.setOnClickListener {
                 onClick(film.id)
+            }
+
+            itemView.setOnLongClickListener {
+                onLongClick(film)
+                true
             }
         }
     }

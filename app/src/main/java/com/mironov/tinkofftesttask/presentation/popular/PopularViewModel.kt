@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.mironov.tinkofftesttask.domain.entity.FilmInfo
+import com.mironov.tinkofftesttask.domain.usecase.AddToFavouriteUseCase
 import com.mironov.tinkofftesttask.domain.usecase.GetPopularFilmsUseCase
 import com.mironov.tinkofftesttask.navigation.router.PopularRouter
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -15,6 +17,7 @@ import javax.inject.Inject
 
 class PopularViewModel @Inject constructor(
     private val getPopularFilmsUseCase: GetPopularFilmsUseCase,
+    private val addToFavouriteUseCase: AddToFavouriteUseCase,
     private val router: PopularRouter
 ) : ViewModel() {
 
@@ -36,6 +39,12 @@ class PopularViewModel @Inject constructor(
             getPopularFilmsUseCase().cachedIn(viewModelScope).collect {
                 _state.value = PopularState.Content(it)
             }
+        }
+    }
+
+    fun saveFavourite(film: FilmInfo) {
+        viewModelScope.launch {
+            addToFavouriteUseCase(film)
         }
     }
 

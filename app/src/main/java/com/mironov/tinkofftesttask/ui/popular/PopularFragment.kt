@@ -43,8 +43,11 @@ class PopularFragment : Fragment() {
 
     private val filmsAdapter by lazy {
         FilmsAdapter(
-            onClick = {
-                viewModel.openDetails(it)
+            onClick = { id ->
+                viewModel.openDetails(id)
+            },
+            onLongClick = { film ->
+                viewModel.saveFavourite(film)
             }
         )
     }

@@ -10,4 +10,8 @@ interface FilmsRepository {
     fun getPopular(): Flow<PagingData<FilmInfo>>
 
     suspend fun getById(id: Int): FilmDetailInfo
+
+    suspend fun addToFavourite(film: FilmInfo)
+
+    fun getFavourite(): Flow<List<FilmInfo>>
 }

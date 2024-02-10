@@ -59,4 +59,7 @@ dependencies {
     ksp(libs.dagger.compiler)
 
     implementation(libs.bundles.retrofit)
+
+    implementation(libs.room.core)
+    ksp(libs.room.compiler)
 }

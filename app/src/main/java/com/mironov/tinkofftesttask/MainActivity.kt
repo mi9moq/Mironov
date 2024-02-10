@@ -12,7 +12,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     val component: AppComponent by lazy {
-        DaggerAppComponent.create()
+        (application as FilmsApp).component
     }
 
     @Inject

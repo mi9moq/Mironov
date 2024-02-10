@@ -1,5 +1,7 @@
 package com.mironov.tinkofftesttask.di
 
+import com.mironov.tinkofftesttask.data.datasource.FilmLocalDataSource
+import com.mironov.tinkofftesttask.data.datasource.FilmLocalDataSourceImpl
 import com.mironov.tinkofftesttask.data.datasource.FilmRemoteDataSource
 import com.mironov.tinkofftesttask.data.datasource.FilmRemoteDataSourceImpl
 import com.mironov.tinkofftesttask.data.repository.FilmsRepositoryImpl
@@ -13,6 +15,10 @@ interface FilmsModule {
     @AppScope
     @Binds
     fun bindRemoteDataSource(impl: FilmRemoteDataSourceImpl): FilmRemoteDataSource
+
+    @AppScope
+    @Binds
+    fun bindFilmLocalDataSource(impl: FilmLocalDataSourceImpl): FilmLocalDataSource
 
     @AppScope
     @Binds
