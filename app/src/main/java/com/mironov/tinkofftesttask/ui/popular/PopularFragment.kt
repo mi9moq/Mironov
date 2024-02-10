@@ -94,7 +94,11 @@ class PopularFragment : Fragment() {
 //            filmsList.visibility = View.VISIBLE
 //            error.visibility = View.GONE
 //            progressBar.visibility = View.GONE
-            filmsList.adapter = filmsAdapter.withLoadStateFooter(FilmsStateAdapter())
+            filmsList.adapter = filmsAdapter.withLoadStateFooter(FilmsStateAdapter(
+                onTryAgainClick = {
+                    viewModel.loadFilms()
+                }
+            ))
 //            lifecycleScope.launch {
 //                (filmsAdapter as PagingDataAdapter<FilmInfo, FilmsViewHolder>).loadStateFlow.collectLatest {
 //                    when(it.refresh){

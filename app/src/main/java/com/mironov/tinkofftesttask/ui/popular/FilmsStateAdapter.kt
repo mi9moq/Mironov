@@ -11,6 +11,7 @@ import com.mironov.tinkofftesttask.databinding.ErrorItemBinding
 import com.mironov.tinkofftesttask.databinding.LoadingItemBinding
 
 class FilmsStateAdapter(
+    private val onTryAgainClick: () -> Unit
 ) : LoadStateAdapter<FilmsStateAdapter.ItemViewHolder>() {
 
     private companion object {
@@ -35,6 +36,7 @@ class FilmsStateAdapter(
                 Log.d("FilmsStateAdapter", "ERROR")
                 ErrorViewHolder(
                     layoutInflater = LayoutInflater.from(parent.context),
+                    onTryAgainClick = onTryAgainClick
                 )
             }
 
@@ -55,10 +57,12 @@ class FilmsStateAdapter(
 
     class ErrorViewHolder internal constructor(
         private val binding: ErrorItemBinding,
+        private val onTryAgainClick: () -> Unit
     ) : ItemViewHolder(binding.root) {
 
         override fun bind(loadState: LoadState) {
             binding.tryAgain.setOnClickListener {
+                onTryAgainClick()
             }
         }
 
@@ -67,13 +71,15 @@ class FilmsStateAdapter(
                 layoutInflater: LayoutInflater,
                 parent: ViewGroup? = null,
                 attachToRoot: Boolean = false,
+                onTryAgainClick: () -> Unit
             ): ErrorViewHolder {
                 return ErrorViewHolder(
                     ErrorItemBinding.inflate(
                         layoutInflater,
                         parent,
                         attachToRoot
-                    )
+                    ),
+                    onTryAgainClick
                 )
             }
         }
