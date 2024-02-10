@@ -12,6 +12,7 @@ import dagger.Component
         FilmsModule::class,
         DispatcherModule::class,
         ViewModelModule::class,
+        NavigationModule::class,
     ]
 )
 interface AppComponent {
