@@ -12,6 +12,7 @@ cicerone = "7.1"
 okhttp = "4.11.0"
 lifecycle = "2.7.0"
 picasso = "2.8"
+paging = "3.2.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -30,6 +31,8 @@ dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", versi
 
 cicerone = { group = "com.github.terrakok", name = "cicerone", version.ref = "cicerone" }
 loggin-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -10,7 +10,8 @@ interface FilmApi {
 
     @GET("api/v2.2/films/collections")
     suspend fun getPopular(
-        @Query("type") type: String = "TOP_POPULAR_MOVIES"
+        @Query("type") type: String = "TOP_POPULAR_MOVIES",
+        @Query("page") page: Int = 1,
     ): PopularResponse
 
     @GET("api/v2.2/films/{id}")

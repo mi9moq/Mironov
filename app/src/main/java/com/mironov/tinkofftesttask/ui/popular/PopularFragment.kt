@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingData
 import com.mironov.tinkofftesttask.MainActivity
 import com.mironov.tinkofftesttask.databinding.FragmentPopularFilmsBinding
 import com.mironov.tinkofftesttask.domain.entity.FilmInfo
@@ -14,6 +16,7 @@ import com.mironov.tinkofftesttask.presentation.ViewModelFactory
 import com.mironov.tinkofftesttask.presentation.popular.PopularState
 import com.mironov.tinkofftesttask.presentation.popular.PopularViewModel
 import com.mironov.tinkofftesttask.ui.utils.collectStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class PopularFragment : Fragment() {
@@ -80,13 +83,15 @@ class PopularFragment : Fragment() {
         }
     }
 
-    private fun applyContentState(content: List<FilmInfo>) {
+    private fun applyContentState(content: PagingData<FilmInfo>) {
         with(binding) {
             filmsList.visibility = View.VISIBLE
             error.visibility = View.GONE
             progressBar.visibility = View.GONE
             filmsList.adapter = filmsAdapter
-            filmsAdapter.submitList(content)
+            viewLifecycleOwner.lifecycleScope.launch {
+                filmsAdapter.submitData(content)
+            }
         }
     }
 

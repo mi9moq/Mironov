@@ -18,15 +18,17 @@ class FilmsViewHolder(
 
     private val binding = FilmItemBinding.bind(itemView)
 
-    fun bind(film: FilmInfo) {
-        with(binding) {
-            name.text = film.name
-            genres.text = "${film.genres.first()} (${film.year})"
-            Picasso.get().load(film.posterUrl).into(poster)
-        }
+    fun bind(film: FilmInfo?) {
+        film?.let {
+            with(binding) {
+                name.text = film.name
+                genres.text = "${film.genres.first()} (${film.year})"
+                Picasso.get().load(film.posterUrl).into(poster)
+            }
 
-        itemView.setOnClickListener {
-            onClick(film.id)
+            itemView.setOnClickListener {
+                onClick(film.id)
+            }
         }
     }
 }

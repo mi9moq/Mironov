@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.constraintlayout)
 
     implementation(libs.cicerone)
+    implementation(libs.paging)
     implementation(libs.loggin.interceptor)
     implementation(libs.lifecycle.vm)
     implementation(libs.lifecycle.rt)

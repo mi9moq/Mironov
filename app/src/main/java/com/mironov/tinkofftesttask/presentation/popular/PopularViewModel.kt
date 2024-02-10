@@ -2,6 +2,7 @@ package com.mironov.tinkofftesttask.presentation.popular
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.mironov.tinkofftesttask.domain.usecase.GetPopularFilmsUseCase
 import com.mironov.tinkofftesttask.navigation.router.PopularRouter
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -30,8 +31,9 @@ class PopularViewModel @Inject constructor(
         _state.value = PopularState.Loading
 
         viewModelScope.launch(handler) {
-            val films = getPopularFilmsUseCase()
-            _state.value = PopularState.Content(films)
+            getPopularFilmsUseCase().cachedIn(viewModelScope).collect {
+                _state.value = PopularState.Content(it)
+            }
         }
     }
 
