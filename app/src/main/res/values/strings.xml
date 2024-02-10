@@ -2,4 +2,6 @@
     <string name="app_name">TinkoffTestTask</string>
     <string name="error_message">Произошла ошибка при загрузке данных, провеорьте подключение к сети</string>
     <string name="try_again">повторить</string>
+    <string name="genres">Жанры:\ </string>
+    <string name="countries">Страны:\ </string>
 </resources>
