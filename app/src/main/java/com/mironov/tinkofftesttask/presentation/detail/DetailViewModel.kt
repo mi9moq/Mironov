@@ -3,6 +3,7 @@ package com.mironov.tinkofftesttask.presentation.detail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mironov.tinkofftesttask.domain.usecase.GetFilmInfoByIdUseCase
+import com.mironov.tinkofftesttask.navigation.router.DetailRouter
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -10,13 +11,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailViewModel @Inject constructor(
-    private val getFilmInfoByIdUseCase: GetFilmInfoByIdUseCase
+    private val getFilmInfoByIdUseCase: GetFilmInfoByIdUseCase,
+    private val router: DetailRouter
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<DetailState>(DetailState.Initial)
     val state = _state.asStateFlow()
 
-    private val handler = CoroutineExceptionHandler{_,_ ->
+    private val handler = CoroutineExceptionHandler { _, _ ->
         _state.value = DetailState.Error
     }
 
@@ -28,5 +30,9 @@ class DetailViewModel @Inject constructor(
             val film = getFilmInfoByIdUseCase(id)
             _state.value = DetailState.Content(film)
         }
+    }
+
+    fun back() {
+        router.back()
     }
 }

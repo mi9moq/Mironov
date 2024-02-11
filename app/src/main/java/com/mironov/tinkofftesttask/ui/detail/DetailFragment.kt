@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.mironov.tinkofftesttask.ui.avtivity.MainActivity
 import com.mironov.tinkofftesttask.databinding.FragmentFilmBinding
 import com.mironov.tinkofftesttask.domain.entity.FilmDetailInfo
 import com.mironov.tinkofftesttask.presentation.ViewModelFactory
 import com.mironov.tinkofftesttask.presentation.detail.DetailState
 import com.mironov.tinkofftesttask.presentation.detail.DetailViewModel
+import com.mironov.tinkofftesttask.ui.avtivity.MainActivity
 import com.mironov.tinkofftesttask.ui.utils.collectStateFlow
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
@@ -89,6 +89,9 @@ class DetailFragment : Fragment() {
     private fun addClickListeners() {
         binding.tryAgain.setOnClickListener {
             viewModel.loadFilm(id)
+        }
+        binding.back.setOnClickListener {
+            viewModel.back()
         }
     }
 

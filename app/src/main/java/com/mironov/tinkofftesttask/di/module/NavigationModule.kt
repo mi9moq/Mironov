@@ -6,6 +6,8 @@ import com.github.terrakok.cicerone.Router
 import com.mironov.tinkofftesttask.di.annotation.AppScope
 import com.mironov.tinkofftesttask.navigation.router.ActivityRouter
 import com.mironov.tinkofftesttask.navigation.router.ActivityRouterImpl
+import com.mironov.tinkofftesttask.navigation.router.DetailRouter
+import com.mironov.tinkofftesttask.navigation.router.DetailRouterImpl
 import com.mironov.tinkofftesttask.navigation.router.PopularRouter
 import com.mironov.tinkofftesttask.navigation.router.PopularRouterImpl
 import dagger.Binds
@@ -35,4 +37,8 @@ interface NavigationModule {
     @AppScope
     @Binds
     fun bindActivityRouter(impl: ActivityRouterImpl): ActivityRouter
+
+    @AppScope
+    @Binds
+    fun bindDetailRouter(impl: DetailRouterImpl): DetailRouter
 }

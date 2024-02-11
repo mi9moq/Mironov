@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -45,9 +45,9 @@
                 android:id="@+id/try_again"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/enable"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/enable"
                 android:text="@string/try_again"
                 android:textSize="16sp" />
 
@@ -67,17 +67,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <ImageView
                 android:id="@+id/poster"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:importantForAccessibility="no"
+                android:scaleType="fitXY"
                 app:layout_constraintBottom_toTopOf="@+id/main_guideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:scaleType="fitXY"
                 tools:src="@tools:sample/avatars" />
+
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="64dp"
+                android:background="@drawable/transparent_background"
+                android:importantForAccessibility="no"
+                android:src="@drawable/arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/name"
