@@ -2,11 +2,11 @@ package com.mironov.tinkofftesttask.ui.popular
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.ViewParent
 import androidx.recyclerview.widget.RecyclerView
 import com.mironov.tinkofftesttask.R
 import com.mironov.tinkofftesttask.databinding.FilmItemBinding
 import com.mironov.tinkofftesttask.domain.entity.FilmInfo
+import com.mironov.tinkofftesttask.ui.utils.formatFilmDescription
 import com.squareup.picasso.Picasso
 
 class FilmsViewHolder(
@@ -23,7 +23,7 @@ class FilmsViewHolder(
         film?.let {
             with(binding) {
                 name.text = film.name
-                genres.text = "${film.genres.first()} (${film.year})"
+                genres.text = formatFilmDescription(film.genres.first(), film.year)
                 Picasso.get().load(film.posterUrl).into(poster)
             }
 
