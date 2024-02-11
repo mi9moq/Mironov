@@ -2,6 +2,7 @@ package com.mironov.tinkofftesttask.ui.avtivity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -12,6 +13,7 @@ import com.mironov.tinkofftesttask.databinding.ActivityMainBinding
 import com.mironov.tinkofftesttask.di.component.AppComponent
 import com.mironov.tinkofftesttask.presentation.ViewModelFactory
 import com.mironov.tinkofftesttask.presentation.activity.ActivityViewModel
+import com.mironov.tinkofftesttask.ui.detail.DetailFragment
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             viewModel.openPopular()
         }
+        setupBackStackChangedListener()
         addClickListeners()
     }
 
@@ -62,10 +65,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeEnableButtons(){
-        with(binding){
+    private fun changeEnableButtons() {
+        with(binding) {
             favourite.isEnabled = !favourite.isEnabled
             popular.isEnabled = !popular.isEnabled
+        }
+    }
+
+    private fun setupBackStackChangedListener() {
+        supportFragmentManager.addOnBackStackChangedListener {
+            val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+
+            if (currentFragment is DetailFragment) {
+                binding.favourite.isVisible = false
+                binding.popular.isVisible = false
+            } else {
+                binding.favourite.isVisible = true
+                binding.popular.isVisible = true
+            }
         }
     }
 
