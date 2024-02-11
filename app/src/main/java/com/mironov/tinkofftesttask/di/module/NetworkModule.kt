@@ -1,7 +1,8 @@
-package com.mironov.tinkofftesttask.di
+package com.mironov.tinkofftesttask.di.module
 
 import com.mironov.tinkofftesttask.data.remote.api.FilmApi
 import com.mironov.tinkofftesttask.data.remote.api.KeyInterceptor
+import com.mironov.tinkofftesttask.di.annotation.AppScope
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

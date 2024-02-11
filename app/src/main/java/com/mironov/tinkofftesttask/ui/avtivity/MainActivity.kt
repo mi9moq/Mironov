@@ -1,4 +1,4 @@
-package com.mironov.tinkofftesttask
+package com.mironov.tinkofftesttask.ui.avtivity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.mironov.tinkofftesttask.FilmsApp
+import com.mironov.tinkofftesttask.R
 import com.mironov.tinkofftesttask.databinding.ActivityMainBinding
-import com.mironov.tinkofftesttask.di.AppComponent
+import com.mironov.tinkofftesttask.di.component.AppComponent
 import com.mironov.tinkofftesttask.presentation.ViewModelFactory
 import com.mironov.tinkofftesttask.presentation.activity.ActivityViewModel
 import javax.inject.Inject

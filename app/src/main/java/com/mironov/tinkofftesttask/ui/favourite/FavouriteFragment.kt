@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.mironov.tinkofftesttask.MainActivity
+import com.mironov.tinkofftesttask.ui.avtivity.MainActivity
 import com.mironov.tinkofftesttask.databinding.FragmentFavouriteFilmsBinding
 import com.mironov.tinkofftesttask.domain.entity.FilmInfo
 import com.mironov.tinkofftesttask.presentation.ViewModelFactory

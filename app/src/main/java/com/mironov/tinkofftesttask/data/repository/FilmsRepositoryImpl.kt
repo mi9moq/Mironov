@@ -6,7 +6,7 @@ import com.mironov.tinkofftesttask.data.converter.DetailInfoConverter
 import com.mironov.tinkofftesttask.data.converter.PopularFilmConverter
 import com.mironov.tinkofftesttask.data.datasource.FilmLocalDataSource
 import com.mironov.tinkofftesttask.data.datasource.FilmRemoteDataSource
-import com.mironov.tinkofftesttask.di.IoDispatcher
+import com.mironov.tinkofftesttask.di.annotation.IoDispatcher
 import com.mironov.tinkofftesttask.domain.entity.FilmDetailInfo
 import com.mironov.tinkofftesttask.domain.entity.FilmInfo
 import com.mironov.tinkofftesttask.domain.repository.FilmsRepository

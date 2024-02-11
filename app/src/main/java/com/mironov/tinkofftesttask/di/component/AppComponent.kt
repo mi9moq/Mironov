@@ -1,8 +1,15 @@
-package com.mironov.tinkofftesttask.di
+package com.mironov.tinkofftesttask.di.component
 
 import android.app.Application
 import com.mironov.tinkofftesttask.FilmsApp
-import com.mironov.tinkofftesttask.MainActivity
+import com.mironov.tinkofftesttask.ui.avtivity.MainActivity
+import com.mironov.tinkofftesttask.di.annotation.AppScope
+import com.mironov.tinkofftesttask.di.module.DataBaseModule
+import com.mironov.tinkofftesttask.di.module.DispatcherModule
+import com.mironov.tinkofftesttask.di.module.FilmsModule
+import com.mironov.tinkofftesttask.di.module.NavigationModule
+import com.mironov.tinkofftesttask.di.module.NetworkModule
+import com.mironov.tinkofftesttask.di.module.ViewModelModule
 import com.mironov.tinkofftesttask.ui.detail.DetailFragment
 import com.mironov.tinkofftesttask.ui.favourite.FavouriteFragment
 import com.mironov.tinkofftesttask.ui.popular.PopularFragment

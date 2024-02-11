@@ -1,5 +1,7 @@
-package com.mironov.tinkofftesttask.di
+package com.mironov.tinkofftesttask.di.module
 
+import com.mironov.tinkofftesttask.di.annotation.AppScope
+import com.mironov.tinkofftesttask.di.annotation.IoDispatcher
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher

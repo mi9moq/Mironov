@@ -1,9 +1,10 @@
-package com.mironov.tinkofftesttask.di
+package com.mironov.tinkofftesttask.di.module
 
 import android.app.Application
 import androidx.room.Room
 import com.mironov.tinkofftesttask.data.local.db.FilmDao
 import com.mironov.tinkofftesttask.data.local.db.FilmDataBase
+import com.mironov.tinkofftesttask.di.annotation.AppScope
 import dagger.Module
 import dagger.Provides
 

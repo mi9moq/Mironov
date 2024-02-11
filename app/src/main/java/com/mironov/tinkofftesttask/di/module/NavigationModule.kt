@@ -1,8 +1,9 @@
-package com.mironov.tinkofftesttask.di
+package com.mironov.tinkofftesttask.di.module
 
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
+import com.mironov.tinkofftesttask.di.annotation.AppScope
 import com.mironov.tinkofftesttask.navigation.router.ActivityRouter
 import com.mironov.tinkofftesttask.navigation.router.ActivityRouterImpl
 import com.mironov.tinkofftesttask.navigation.router.PopularRouter

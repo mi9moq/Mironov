@@ -1,4 +1,4 @@
-package com.mironov.tinkofftesttask.di
+package com.mironov.tinkofftesttask.di.annotation
 
 import javax.inject.Qualifier
 

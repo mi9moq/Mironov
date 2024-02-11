@@ -1,6 +1,7 @@
-package com.mironov.tinkofftesttask.di
+package com.mironov.tinkofftesttask.di.module
 
 import androidx.lifecycle.ViewModel
+import com.mironov.tinkofftesttask.di.annotation.ViewModelKey
 import com.mironov.tinkofftesttask.presentation.activity.ActivityViewModel
 import com.mironov.tinkofftesttask.presentation.detail.DetailViewModel
 import com.mironov.tinkofftesttask.presentation.favourite.FavouriteViewModel

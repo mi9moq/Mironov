@@ -12,15 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.paging.PagingData
-import androidx.paging.PagingDataAdapter
-import com.mironov.tinkofftesttask.MainActivity
+import com.mironov.tinkofftesttask.ui.avtivity.MainActivity
 import com.mironov.tinkofftesttask.databinding.FragmentPopularFilmsBinding
 import com.mironov.tinkofftesttask.domain.entity.FilmInfo
 import com.mironov.tinkofftesttask.presentation.ViewModelFactory
 import com.mironov.tinkofftesttask.presentation.popular.PopularState
 import com.mironov.tinkofftesttask.presentation.popular.PopularViewModel
 import com.mironov.tinkofftesttask.ui.utils.collectStateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
