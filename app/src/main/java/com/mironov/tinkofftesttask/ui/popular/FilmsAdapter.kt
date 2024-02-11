@@ -2,7 +2,6 @@ package com.mironov.tinkofftesttask.ui.popular
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.ListAdapter
 import com.mironov.tinkofftesttask.domain.entity.FilmInfo
 
 class FilmsAdapter(

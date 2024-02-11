@@ -1,6 +1,5 @@
 package com.mironov.tinkofftesttask.presentation.detail
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mironov.tinkofftesttask.domain.usecase.GetFilmInfoByIdUseCase
@@ -18,7 +17,6 @@ class DetailViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     private val handler = CoroutineExceptionHandler{_,_ ->
-        Log.d("DetailViewModel", "handle error")
         _state.value = DetailState.Error
     }
 

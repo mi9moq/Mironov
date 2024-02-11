@@ -1,6 +1,5 @@
 package com.mironov.tinkofftesttask.data.datasource
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -9,7 +8,6 @@ import com.mironov.tinkofftesttask.data.remote.api.FilmPageSource
 import com.mironov.tinkofftesttask.data.remote.dto.FilmDetailInfoDto
 import com.mironov.tinkofftesttask.data.remote.dto.FilmInfoDto
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import javax.inject.Inject
 
 interface FilmRemoteDataSource {
