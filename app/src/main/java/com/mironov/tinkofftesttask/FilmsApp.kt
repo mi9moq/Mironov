@@ -1,7 +1,7 @@
 package com.mironov.tinkofftesttask
 
 import android.app.Application
-import com.mironov.tinkofftesttask.di.DaggerAppComponent
+import com.mironov.tinkofftesttask.di.component.DaggerAppComponent
 
 class FilmsApp: Application() {
 

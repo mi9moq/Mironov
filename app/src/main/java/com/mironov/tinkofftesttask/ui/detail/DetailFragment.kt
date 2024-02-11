@@ -1,6 +1,7 @@
 package com.mironov.tinkofftesttask.ui.detail
 
 import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -69,6 +70,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        calculateGuidelineHeight()
         addClickListeners()
         observeViewModel()
     }
@@ -132,5 +134,11 @@ class DetailFragment : Fragment() {
             progressBar.visibility = View.VISIBLE
             error.visibility = View.GONE
         }
+    }
+
+    private fun calculateGuidelineHeight() {
+        val phoneHeight = Resources.getSystem().displayMetrics.heightPixels
+        val guidelineHeight = ((2 * phoneHeight) / 3)
+        binding.mainGuideline.setGuidelineBegin(guidelineHeight)
     }
 }
