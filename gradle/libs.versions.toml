@@ -14,6 +14,13 @@ lifecycle = "2.7.0"
 picasso = "2.8"
 paging = "3.2.1"
 room = "2.6.1"
+junit="5.9.2"
+mokito-kotlin = "4.1.0"
+mokito-junit = "5.3.0"
+arch-core-testing = "2.2.0"
+coroutines-test = "1.7.0"
+junit5 = "1.8.2.1"
+turbine = "1.0.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -38,10 +45,21 @@ paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "pa
 room-core = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
+junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
+junit-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junit" }
+junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mokito-kotlin" }
+mockito-junit = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "mokito-junit" }
+arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "arch-core-testing" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines-test" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+junit = { id = "de.mannodermaus.android-junit5", version.ref = "junit5" }
 
 [bundles]
 retrofit = ["retorfit-core", "retorfit-gsonConverter",]
+unit-tests = ["junit-api", "junit-params", "junit-engine", "mockito-kotlin", "mockito-junit", "arch-core-testing", "coroutines-test","turbine"]
