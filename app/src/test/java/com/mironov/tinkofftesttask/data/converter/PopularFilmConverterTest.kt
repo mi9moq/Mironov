@@ -1,6 +1,5 @@
-package com.mironov.tinkofftesttask.converter
+package com.mironov.tinkofftesttask.data.converter
 
-import com.mironov.tinkofftesttask.data.converter.PopularFilmConverter
 import com.mironov.tinkofftesttask.utils.FilmData
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
