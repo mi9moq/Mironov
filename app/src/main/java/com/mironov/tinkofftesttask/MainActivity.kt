@@ -47,12 +47,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addClickListeners() {
-        binding.favourite.setOnClickListener {
-            viewModel.openFavourite()
-        }
+        with(binding) {
+            favourite.setOnClickListener {
+                viewModel.openFavourite()
+                changeEnableButtons()
+            }
 
-        binding.popular.setOnClickListener {
-            viewModel.openPopular()
+            popular.setOnClickListener {
+                viewModel.back()
+                changeEnableButtons()
+            }
+        }
+    }
+
+    private fun changeEnableButtons(){
+        with(binding){
+            favourite.isEnabled = !favourite.isEnabled
+            popular.isEnabled = !popular.isEnabled
         }
     }
 

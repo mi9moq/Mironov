@@ -4,4 +4,6 @@
     <string name="try_again">повторить</string>
     <string name="genres">Жанры:\ </string>
     <string name="countries">Страны:\ </string>
+    <string name="Популярные">popular</string>
+    <string name="favourite">Избранное</string>
 </resources>

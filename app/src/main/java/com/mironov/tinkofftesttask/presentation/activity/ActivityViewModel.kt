@@ -15,4 +15,8 @@ class ActivityViewModel @Inject constructor(
     fun openFavourite() {
         router.openFavourite()
     }
+
+    fun back() {
+        router.popBackStack()
+    }
 }

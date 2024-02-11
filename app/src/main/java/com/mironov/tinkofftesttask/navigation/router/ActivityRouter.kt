@@ -10,6 +10,8 @@ interface ActivityRouter {
     fun openFavourite()
 
     fun openPopular()
+
+    fun popBackStack()
 }
 
 class ActivityRouterImpl @Inject constructor(
@@ -22,5 +24,9 @@ class ActivityRouterImpl @Inject constructor(
 
     override fun openPopular() {
         router.newRootScreen(getPopular())
+    }
+
+    override fun popBackStack() {
+        router.exit()
     }
 }
