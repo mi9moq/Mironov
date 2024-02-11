@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
@@ -12,8 +13,10 @@ import com.mironov.tinkofftesttask.R
 import com.mironov.tinkofftesttask.databinding.ActivityMainBinding
 import com.mironov.tinkofftesttask.di.component.AppComponent
 import com.mironov.tinkofftesttask.presentation.ViewModelFactory
+import com.mironov.tinkofftesttask.presentation.activity.ActivityState
 import com.mironov.tinkofftesttask.presentation.activity.ActivityViewModel
 import com.mironov.tinkofftesttask.ui.detail.DetailFragment
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -47,28 +50,34 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             viewModel.openPopular()
         }
+        observeState()
         setupBackStackChangedListener()
         addClickListeners()
     }
 
+    private fun observeState(){
+        lifecycleScope.launch {
+            viewModel.state.collect(::applyState)
+        }
+    }
+
+    private fun applyState(state: ActivityState) {
+        with(binding) {
+            popular.isEnabled = state.popularEnable
+            popular.isVisible = state.popularVisibility
+            favourite.isEnabled = state.favouriteEnable
+            favourite.isVisible = state.favouriteVisibility
+        }
+    }
     private fun addClickListeners() {
         with(binding) {
             favourite.setOnClickListener {
                 viewModel.openFavourite()
-                changeEnableButtons()
             }
 
             popular.setOnClickListener {
                 viewModel.back()
-                changeEnableButtons()
             }
-        }
-    }
-
-    private fun changeEnableButtons() {
-        with(binding) {
-            favourite.isEnabled = !favourite.isEnabled
-            popular.isEnabled = !popular.isEnabled
         }
     }
 
@@ -77,11 +86,9 @@ class MainActivity : AppCompatActivity() {
             val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
 
             if (currentFragment is DetailFragment) {
-                binding.favourite.isVisible = false
-                binding.popular.isVisible = false
+                viewModel.hideButtons()
             } else {
-                binding.favourite.isVisible = true
-                binding.popular.isVisible = true
+                viewModel.displayButtons()
             }
         }
     }
