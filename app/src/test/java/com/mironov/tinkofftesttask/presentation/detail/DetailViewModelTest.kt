@@ -16,6 +16,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import org.mockito.kotlin.doSuspendableAnswer
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import java.net.UnknownHostException
 import java.util.stream.Stream
@@ -73,6 +74,14 @@ class DetailViewModelTest {
             assertEquals(DetailState.Loading, awaitItem())
             assertEquals(DetailState.Error, awaitItem())
         }
+    }
+
+    @Test
+    fun `back EXPECT navigate back`() {
+
+        viewModel.back()
+
+        verify(router).back()
     }
 
     private companion object{
