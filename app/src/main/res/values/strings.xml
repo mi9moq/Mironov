@@ -6,4 +6,5 @@
     <string name="countries">Страны:\ </string>
     <string name="popular">Популярные</string>
     <string name="favourite">Избранное</string>
+    <string name="film_saved">Фильм сохранен в избранное</string>
 </resources>

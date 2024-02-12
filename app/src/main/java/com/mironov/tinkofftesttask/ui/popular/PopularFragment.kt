@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.paging.PagingData
+import com.mironov.tinkofftesttask.R
 import com.mironov.tinkofftesttask.databinding.FragmentPopularFilmsBinding
 import com.mironov.tinkofftesttask.domain.entity.FilmInfo
 import com.mironov.tinkofftesttask.presentation.ViewModelFactory
@@ -49,6 +51,7 @@ class PopularFragment : Fragment() {
             },
             onLongClick = { film ->
                 viewModel.saveFavourite(film)
+                Toast.makeText(context, R.string.film_saved, Toast.LENGTH_LONG).show()
             }
         )
     }
@@ -80,7 +83,7 @@ class PopularFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        collectStateFlow(viewModel.state,::applyState)
+        collectStateFlow(viewModel.state, ::applyState)
     }
 
     private fun applyState(content: PagingData<FilmInfo>) {
