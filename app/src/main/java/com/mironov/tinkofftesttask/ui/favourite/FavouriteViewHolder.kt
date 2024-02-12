@@ -2,6 +2,7 @@ package com.mironov.tinkofftesttask.ui.favourite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.mironov.tinkofftesttask.R
 import com.mironov.tinkofftesttask.databinding.FilmItemBinding
@@ -22,6 +23,7 @@ class FavouriteViewHolder(
             name.text = film.name
             genres.text = formatFilmDescription(film.genres.first(), film.year)
             Picasso.get().load(film.posterUrl).into(poster)
+            favourite.isVisible = true
         }
     }
 }
