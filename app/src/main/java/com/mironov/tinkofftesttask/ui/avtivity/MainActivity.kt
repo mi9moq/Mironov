@@ -16,10 +16,11 @@ import com.mironov.tinkofftesttask.presentation.ViewModelFactory
 import com.mironov.tinkofftesttask.presentation.activity.ActivityState
 import com.mironov.tinkofftesttask.presentation.activity.ActivityViewModel
 import com.mironov.tinkofftesttask.ui.detail.DetailFragment
+import com.mironov.tinkofftesttask.ui.utils.OnBackPressedListener
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnBackPressedListener {
 
     val component: AppComponent by lazy {
         (application as FilmsApp).component
@@ -101,5 +102,9 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         navigatorHolder.removeNavigator()
+    }
+
+    override fun onBackPressedListener() {
+        viewModel.back()
     }
 }

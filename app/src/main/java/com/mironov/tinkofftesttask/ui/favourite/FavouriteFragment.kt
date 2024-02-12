@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mironov.tinkofftesttask.ui.avtivity.MainActivity
@@ -13,6 +14,7 @@ import com.mironov.tinkofftesttask.domain.entity.FilmInfo
 import com.mironov.tinkofftesttask.presentation.ViewModelFactory
 import com.mironov.tinkofftesttask.presentation.favourite.FavouriteState
 import com.mironov.tinkofftesttask.presentation.favourite.FavouriteViewModel
+import com.mironov.tinkofftesttask.ui.utils.OnBackPressedListener
 import com.mironov.tinkofftesttask.ui.utils.collectStateFlow
 import javax.inject.Inject
 
@@ -47,6 +49,11 @@ class FavouriteFragment : Fragment() {
         super.onAttach(context)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        addCallback()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -64,6 +71,19 @@ class FavouriteFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun addCallback() {
+        val backPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                (requireActivity() as OnBackPressedListener).onBackPressedListener()
+            }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            backPressedCallback
+        )
     }
 
     private fun observeViewModel() {

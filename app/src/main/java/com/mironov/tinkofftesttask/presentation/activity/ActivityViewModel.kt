@@ -24,7 +24,6 @@ class ActivityViewModel @Inject constructor(
             _state.value = state.value.copy(favouriteEnable = false, popularEnable = true)
             router.openFavourite()
         }
-
     }
 
     fun back() {
