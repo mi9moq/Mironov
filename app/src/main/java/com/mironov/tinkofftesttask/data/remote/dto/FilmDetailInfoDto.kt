@@ -8,7 +8,7 @@ data class FilmDetailInfoDto(
     @SerializedName("nameRu")
     val name: String,
     val posterUrl: String,
-    val description: String,
+    val description: String?,
     val year: Int,
     val countries: List<CountryDto>,
     val genres: List<Genre>

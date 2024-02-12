@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mironov.tinkofftesttask.databinding.FragmentFilmBinding
@@ -119,7 +120,12 @@ class DetailFragment : Fragment() {
             name.text = film.name
             genres.text = film.genres.joinToString(", ")
             countries.text = film.countries.joinToString(", ")
-            description.text = film.description
+            if (film.description.isEmpty()){
+                description.isVisible = false
+            } else {
+                description.text = film.description
+            }
+
         }
     }
 

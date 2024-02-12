@@ -13,6 +13,11 @@ class DetailInfoConverter @Inject constructor() {
         year = from.year,
         countries = from.countries.map { it.country },
         genres = from.genres.map { it.genre },
-        description = from.description,
+        description = from.description ?: EMPTY_DESCRIPTION,
     )
+
+    companion object {
+
+        private const val EMPTY_DESCRIPTION =""
+    }
 }
