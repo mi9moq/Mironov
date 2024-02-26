@@ -31,7 +31,8 @@ object FilmData {
         name = "name",
         posterUrl = "poster",
         year = 2019,
-        genres = listOf(Genre("1"), Genre("2"), Genre("3"))
+        genres = listOf(Genre("1"), Genre("2"), Genre("3")),
+        nameOriginal = ""
     )
 
     val filmDetailInfo = FilmDetailInfo(

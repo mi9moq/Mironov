@@ -9,7 +9,7 @@ class PopularFilmConverter @Inject constructor() {
 
     fun dtoToEntity(from: FilmInfoDto): FilmInfo = FilmInfo(
         id = from.id,
-        name = from.name,
+        name = from.name ?: from.nameOriginal ?: "",
         posterUrl = from.posterUrl,
         year = from.year,
         genres = from.genres.map { it.genre }

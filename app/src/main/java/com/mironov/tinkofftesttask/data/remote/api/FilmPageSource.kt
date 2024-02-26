@@ -11,7 +11,7 @@ class FilmPageSource @Inject constructor(
 
     companion object {
 
-        private const val MAX_PAGE = 7
+        private const val MAX_PAGE = 34
 
         private const val START_PAGE = 1
     }
