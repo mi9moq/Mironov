@@ -52,6 +52,7 @@ object FilmData {
         year = 2000,
         description = "description",
         countries = listOf(CountryDto("C1"), CountryDto("C2")),
-        genres = listOf(Genre("1"), Genre("2"), Genre("3"))
+        genres = listOf(Genre("1"), Genre("2"), Genre("3")),
+        nameOriginal = ""
     )
 }

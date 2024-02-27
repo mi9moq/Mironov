@@ -8,7 +8,7 @@ class DetailInfoConverter @Inject constructor() {
 
     fun convert(from: FilmDetailInfoDto): FilmDetailInfo = FilmDetailInfo(
         id = from.id,
-        name = from.name,
+        name = from.name ?: from.nameOriginal ?: "",
         posterUrl = from.posterUrl,
         year = from.year,
         countries = from.countries.map { it.country },
